@@ -6,6 +6,11 @@ module AlpacaDevice
     attr_accessor :discovery_port
     attr_accessor :alpaca_port
 
+    attr_accessor :description_name
+    attr_accessor :description_creator
+    attr_accessor :description_version
+    attr_accessor :description_location
+
     def initialize
       @discovery_host = "0.0.0.0"
       @discovery_port = 32227

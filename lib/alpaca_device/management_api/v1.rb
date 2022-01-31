@@ -11,10 +11,10 @@ module AlpacaDevice
     get :description do
       {
         'Value' => {
-          'ServerName': '',
-          'Manufacturer': '',
-          'ManufacturerVersion': '',
-          'Location': ''
+          'ServerName': AlpacaDevice.config.description_name,
+          'Manufacturer': AlpacaDevice.config.description_creator,
+          'ManufacturerVersion': AlpacaDevice.config.description_version,
+          'Location': AlpacaDevice.config.description_location
         },
         'ClientTransactionID' => params[:ClientTransactionID] || 0,
         'ServerTransactionID' => 1
