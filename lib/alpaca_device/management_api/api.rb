@@ -4,7 +4,7 @@ require 'grape'
 require_relative './v1.rb'
 
 module AlpacaDevice
-  class ManagementApi < Grape::API
+  class ManagementAPI < Grape::API
     mount AlpacaDevice::ManagementApiV1, '/v1'
 
     params do

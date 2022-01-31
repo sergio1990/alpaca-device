@@ -6,7 +6,7 @@ require_relative "alpaca_device/configuration"
 module AlpacaDevice
   class Error < StandardError; end
 
-  autoload :DiscoveryService, 'alpaca_device/discovery_service'
+  autoload :DiscoveryService, 'alpaca_device/discovery_service.rb'
   autoload :Api, 'alpaca_device/api'
 
   module AscomDevices
