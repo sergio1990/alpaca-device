@@ -7,6 +7,7 @@ module AlpacaDevice
   class Error < StandardError; end
 
   autoload :DiscoveryService, 'alpaca_device/discovery_service'
+  autoload :Api, 'alpaca_device/api'
 
   class << self
     def config
