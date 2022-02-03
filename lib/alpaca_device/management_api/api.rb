@@ -16,7 +16,7 @@ module AlpacaDevice
       {
         'Value' => [1, 2, 3, 4],
         'ClientTransactionID' => params[:ClientTransactionID] || 0,
-        'ServerTransactionID' => 1
+        'ServerTransactionID' => server_transaction_id
       }
     end
   end

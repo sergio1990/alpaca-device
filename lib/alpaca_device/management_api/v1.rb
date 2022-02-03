@@ -17,7 +17,7 @@ module AlpacaDevice
           'Location' => AlpacaDevice.config.description_location
         },
         'ClientTransactionID' => params[:ClientTransactionID] || 0,
-        'ServerTransactionID' => 1
+        'ServerTransactionID' => server_transaction_id
       }
     end
 
@@ -38,7 +38,7 @@ module AlpacaDevice
       {
         'Value' => devices_api_output,
         'ClientTransactionID' => params[:ClientTransactionID] || 0,
-        'ServerTransactionID' => 1
+        'ServerTransactionID' => server_transaction_id
       }
     end
   end
