@@ -5,7 +5,7 @@ require_relative './v1.rb'
 
 module AlpacaDevice
   class ManagementAPI < Grape::API
-    mount AlpacaDevice::ManagementApiV1, '/v1'
+    mount AlpacaDevice::ManagementApiV1 => '/v1'
 
     params do
       optional :ClientID, type: Integer, allow_blank: false
