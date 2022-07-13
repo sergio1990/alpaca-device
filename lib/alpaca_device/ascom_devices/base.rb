@@ -19,6 +19,8 @@ module AlpacaDevice
         @name = meta_info.name
         @type = meta_info.type
         @uuid = meta_info.uuid
+
+        @connected = false
       end
 
       def set_action(action:, parameters:)

@@ -12,7 +12,6 @@ module AlpacaDevice
       optional :ClientTransactionID, type: Integer, allow_blank: false
     end
     get :apiversions do
-      puts params
       {
         'Value' => [1, 2, 3, 4],
         'ClientTransactionID' => params[:ClientTransactionID] || 0,

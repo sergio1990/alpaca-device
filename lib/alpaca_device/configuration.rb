@@ -39,6 +39,10 @@ module AlpacaDevice
       end.flatten
     end
 
+    def ascom_device(type, number)
+      registered_devices[type.downcase][number]
+    end
+
     private
 
     attr_reader :registered_devices

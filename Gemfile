@@ -7,4 +7,5 @@ gemspec
 
 gem "rake", "~> 13.0"
 
+gem "rack-test", "~> 2.0"
 gem "minitest", "~> 5.0"
