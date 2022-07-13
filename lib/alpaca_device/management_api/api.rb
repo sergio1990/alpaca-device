@@ -13,7 +13,7 @@ module AlpacaDevice
     end
     get :apiversions do
       {
-        'Value' => [1, 2, 3, 4],
+        'Value' => [1],
         'ClientTransactionID' => params[:ClientTransactionID] || 0,
         'ServerTransactionID' => server_transaction_id
       }
