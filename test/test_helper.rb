@@ -24,6 +24,11 @@ class MockFocuser < AlpacaDevice::AscomDevices::BaseFocuser
     super(name: 'Mock Focuser', uuid: 'uuid')
 
     @position = 0
+    @description = "MockFocuser created specifically for tests"
+    @driverinfo = "The driver for the MockFocuser"
+    @driverversion = "1.0"
+    @interfaceversion = 3
+    @supportedactions = []
   end
 
   def set_tempcomp(tempcomp:)

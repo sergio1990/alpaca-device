@@ -34,4 +34,87 @@ class TestDeviceApiV1 < Minitest::Test
     refute_nil value
     assert_equal 0, value
   end
+
+  def test_description
+    get '/api/v1/focuser/0/description', {
+      :ClientID => 123,
+      :ClientTransactionID => 890
+    }
+    assert last_response.ok?
+    assert_transaction_info(890)
+
+    value = json_response[:Value]
+
+    refute_nil value
+    assert_equal "MockFocuser created specifically for tests", value
+  end
+
+  def test_driverinfo
+    get '/api/v1/focuser/0/driverinfo', {
+      :ClientID => 123,
+      :ClientTransactionID => 890
+    }
+    assert last_response.ok?
+    assert_transaction_info(890)
+
+    value = json_response[:Value]
+
+    refute_nil value
+    assert_equal "The driver for the MockFocuser", value
+  end
+
+  def test_driverversion
+    get '/api/v1/focuser/0/driverversion', {
+      :ClientID => 123,
+      :ClientTransactionID => 890
+    }
+    assert last_response.ok?
+    assert_transaction_info(890)
+
+    value = json_response[:Value]
+
+    refute_nil value
+    assert_equal "1.0", value
+  end
+
+  def test_interfaceversion
+    get '/api/v1/focuser/0/interfaceversion', {
+      :ClientID => 123,
+      :ClientTransactionID => 890
+    }
+    assert last_response.ok?
+    assert_transaction_info(890)
+
+    value = json_response[:Value]
+
+    refute_nil value
+    assert_equal 3, value
+  end
+
+  def test_name
+    get '/api/v1/focuser/0/name', {
+      :ClientID => 123,
+      :ClientTransactionID => 890
+    }
+    assert last_response.ok?
+    assert_transaction_info(890)
+
+    value = json_response[:Value]
+
+    refute_nil value
+    assert_equal "Mock Focuser", value
+  end
+
+  def test_supportedactions
+    get '/api/v1/focuser/0/supportedactions', {
+      :ClientID => 123,
+      :ClientTransactionID => 890
+    }
+    assert last_response.ok?
+    assert_transaction_info(890)
+
+    value = json_response[:Value]
+
+    refute_nil value
+  end
 end
