@@ -21,7 +21,9 @@ module AlpacaDevice
           mount CommonApi
 
           get :position do
-
+            success_response(
+              'Value' => current_ascom_device.position
+            )
           end
         end
       end

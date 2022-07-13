@@ -20,6 +20,12 @@ end
 Rack::Test::Methods.send :include, RackTestAlpacaDeviceHelpers
 
 class MockFocuser < AlpacaDevice::AscomDevices::BaseFocuser
+  def initialize
+    super(name: 'Mock Focuser', uuid: 'uuid')
+
+    @position = 0
+  end
+
   def set_tempcomp(tempcomp:)
   end
 
@@ -31,7 +37,7 @@ class MockFocuser < AlpacaDevice::AscomDevices::BaseFocuser
 end
 
 AlpacaDevice.configure do |config|
-  config.register_ascom_device MockFocuser.new(name: 'Mock Focuser', uuid: 'uuid')
+  config.register_ascom_device MockFocuser.new
 
   config.description_name = "SG Alpaca Device"
   config.description_creator = "SG"
