@@ -89,6 +89,14 @@ module AlpacaDevice
             'Value' => result
           )
         end
+
+        params do
+          requires :Connected, type: Boolean
+        end
+        put :connected do
+          current_ascom_device.set_connected(connected: params[:Connected])
+          success_response
+        end
       end
     end
   end

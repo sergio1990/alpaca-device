@@ -211,4 +211,21 @@ class TestDeviceApiV1 < Minitest::Test
     }
     refute last_response.ok?
   end
+
+  def test_setconnected
+    put '/api/v1/focuser/0/connected', {
+      :Connected => true,
+      :ClientID => 123,
+      :ClientTransactionID => 890
+    }
+    assert last_response.ok?
+  end
+
+  def test_setconnected_bad_request
+    put '/api/v1/focuser/0/connected', {
+      :ClientID => 123,
+      :ClientTransactionID => 890
+    }
+    refute last_response.ok?
+  end
 end

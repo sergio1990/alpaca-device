@@ -54,6 +54,9 @@ class MockFocuser < AlpacaDevice::AscomDevices::BaseFocuser
   def set_commandstring(command:, raw:)
     "pong:#{command}"
   end
+
+  def set_connected(connected:)
+  end
 end
 
 AlpacaDevice.configure do |config|
