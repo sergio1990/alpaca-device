@@ -11,6 +11,10 @@ module AlpacaDevice
         AlpacaDevice.config.ascom_device(type, number)
       end
 
+      def current_ascom_device
+        fetch_device(current_ascom_type, params[:device_number])
+      end
+
       def success_response(response_hash = {})
         with_common_response(response_hash, 0, "")
       end

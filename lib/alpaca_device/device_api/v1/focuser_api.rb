@@ -9,8 +9,8 @@ module AlpacaDevice
     module V1
       class FocuserApi < Grape::API
         helpers do
-          def current_ascom_device
-            fetch_device('focuser', params[:device_number])
+          def current_ascom_type
+            AlpacaDevice::AscomDevices::Type::FOCUSER
           end
         end
 
