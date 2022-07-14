@@ -161,4 +161,54 @@ class TestDeviceApiV1 < Minitest::Test
     }
     refute last_response.ok?
   end
+
+  def test_commandbool
+    put '/api/v1/focuser/0/commandbool', {
+      :Command => 'testbool',
+      :Raw => 'true',
+      :ClientID => 123,
+      :ClientTransactionID => 890
+    }
+    assert last_response.ok?
+    assert_transaction_info(890)
+
+    value = json_response[:Value]
+
+    refute_nil value
+    assert_equal false, value
+  end
+
+  def test_commandbool_bad_request
+    put '/api/v1/focuser/0/commandbool', {
+      :Command => 'testbool',
+      :ClientID => 123,
+      :ClientTransactionID => 890
+    }
+    refute last_response.ok?
+  end
+
+  def test_commandstring
+    put '/api/v1/focuser/0/commandstring', {
+      :Command => 'teststring',
+      :Raw => 'true',
+      :ClientID => 123,
+      :ClientTransactionID => 890
+    }
+    assert last_response.ok?
+    assert_transaction_info(890)
+
+    value = json_response[:Value]
+
+    refute_nil value
+    assert_equal "pong:teststring", value
+  end
+
+  def test_commandstring_bad_request
+    put '/api/v1/focuser/0/commandstring', {
+      :Command => 'teststring',
+      :ClientID => 123,
+      :ClientTransactionID => 890
+    }
+    refute last_response.ok?
+  end
 end

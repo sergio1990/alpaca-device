@@ -67,6 +67,28 @@ module AlpacaDevice
           current_ascom_device.set_commandblind(command: params[:Command], raw: params[:Raw])
           success_response
         end
+
+        params do
+          requires :Command, type: String
+          requires :Raw, type: String
+        end
+        put :commandbool do
+          result = current_ascom_device.set_commandbool(command: params[:Command], raw: params[:Raw])
+          success_response(
+            'Value' => result
+          )
+        end
+
+        params do
+          requires :Command, type: String
+          requires :Raw, type: String
+        end
+        put :commandstring do
+          result = current_ascom_device.set_commandstring(command: params[:Command], raw: params[:Raw])
+          success_response(
+            'Value' => result
+          )
+        end
       end
     end
   end
