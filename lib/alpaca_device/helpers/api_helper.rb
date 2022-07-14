@@ -11,7 +11,7 @@ module AlpacaDevice
         AlpacaDevice.config.ascom_device(type, number)
       end
 
-      def success_response(response_hash)
+      def success_response(response_hash = {})
         with_common_response(response_hash, 0, "")
       end
 

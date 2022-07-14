@@ -117,4 +117,48 @@ class TestDeviceApiV1 < Minitest::Test
 
     refute_nil value
   end
+
+  def test_action
+    put '/api/v1/focuser/0/action', {
+      :Action => 'test',
+      :Parameters => 'parameters',
+      :ClientID => 123,
+      :ClientTransactionID => 890
+    }
+    assert last_response.ok?
+    assert_transaction_info(890)
+
+    value = json_response[:Value]
+
+    assert_equal "test:parameters", value
+  end
+
+  def test_action_bad_request
+    put '/api/v1/focuser/0/action', {
+      :Parameters => 'parameters',
+      :ClientID => 123,
+      :ClientTransactionID => 890
+    }
+    refute last_response.ok?
+  end
+
+  def test_commandblind
+    put '/api/v1/focuser/0/commandblind', {
+      :Command => 'test',
+      :Raw => 'true',
+      :ClientID => 123,
+      :ClientTransactionID => 890
+    }
+    assert last_response.ok?
+    assert_transaction_info(890)
+  end
+
+  def test_commandblind_bad_request
+    put '/api/v1/focuser/0/commandblind', {
+      :Command => 'test',
+      :ClientID => 123,
+      :ClientTransactionID => 890
+    }
+    refute last_response.ok?
+  end
 end

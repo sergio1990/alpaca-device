@@ -39,6 +39,13 @@ class MockFocuser < AlpacaDevice::AscomDevices::BaseFocuser
 
   def set_move(position:)
   end
+
+  def set_action(action:, parameters:)
+    "#{action}:#{parameters}"
+  end
+
+  def set_commandblind(command:, raw:)
+  end
 end
 
 AlpacaDevice.configure do |config|

@@ -47,6 +47,26 @@ module AlpacaDevice
             'Value' => current_ascom_device.supportedactions
           )
         end
+
+        params do
+          requires :Action, type: String
+          requires :Parameters, type: String
+        end
+        put :action do
+          result = current_ascom_device.set_action(action: params[:Action], parameters: params[:Parameters])
+          success_response(
+            'Value' => result
+          )
+        end
+
+        params do
+          requires :Command, type: String
+          requires :Raw, type: String
+        end
+        put :commandblind do
+          current_ascom_device.set_commandblind(command: params[:Command], raw: params[:Raw])
+          success_response
+        end
       end
     end
   end
