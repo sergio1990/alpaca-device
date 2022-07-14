@@ -2,11 +2,14 @@
 
 require 'grape'
 
+require_relative '../helpers/shared_params'
+
 module AlpacaDevice
   class ManagementApiV1 < Grape::API
+    helpers AlpacaDevice::Helpers::SharedParams
+
     params do
-      optional :ClientID, type: Integer, allow_blank: false
-      optional :ClientTransactionID, type: Integer, allow_blank: false
+      use :client_transaction_info
     end
     get :description do
       {
@@ -22,8 +25,7 @@ module AlpacaDevice
     end
 
     params do
-      optional :ClientID, type: Integer, allow_blank: false
-      optional :ClientTransactionID, type: Integer, allow_blank: false
+      use :client_transaction_info
     end
     get :configureddevices do
       registered_ascom_devices = AlpacaDevice.config.registered_ascom_devices_info

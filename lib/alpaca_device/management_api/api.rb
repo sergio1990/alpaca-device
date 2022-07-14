@@ -2,14 +2,16 @@
 
 require 'grape'
 require_relative './v1.rb'
+require_relative '../helpers/shared_params'
 
 module AlpacaDevice
   class ManagementAPI < Grape::API
     mount AlpacaDevice::ManagementApiV1 => '/v1'
 
+    helpers AlpacaDevice::Helpers::SharedParams
+
     params do
-      optional :ClientID, type: Integer, allow_blank: false
-      optional :ClientTransactionID, type: Integer, allow_blank: false
+      use :client_transaction_info
     end
     get :apiversions do
       {
