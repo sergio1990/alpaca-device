@@ -29,6 +29,14 @@ class MockFocuser < AlpacaDevice::AscomDevices::BaseFocuser
     @driverversion = "1.0"
     @interfaceversion = 3
     @supportedactions = []
+    @absolute = false
+    @ismoving = false
+    @maxincrement = 100
+    @maxstep = 65535
+    @stepsize = 4
+    @tempcomp = false
+    @tempcompavailable = false
+    @temperature = 20
   end
 
   def set_tempcomp(tempcomp:)
