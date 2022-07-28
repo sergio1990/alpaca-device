@@ -25,6 +25,8 @@ module AlpacaDevice
             uuid: uuid
           )
         )
+
+        @position = 0
       end
 
       def set_tempcomp(tempcomp:)

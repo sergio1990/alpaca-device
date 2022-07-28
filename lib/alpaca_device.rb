@@ -11,6 +11,7 @@ module AlpacaDevice
 
   module AscomDevices
     autoload :BaseFocuser, 'alpaca_device/ascom_devices/base_focuser'
+    autoload :BaseFocuserV3, 'alpaca_device/ascom_devices/base_focuser_v3'
   end
 
   class << self

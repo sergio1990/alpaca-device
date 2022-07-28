@@ -21,6 +21,7 @@ module AlpacaDevice
         @uuid = meta_info.uuid
 
         @connected = false
+        @supportedactions = []
       end
 
       def set_action(action:, parameters:)
