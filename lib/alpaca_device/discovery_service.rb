@@ -10,6 +10,7 @@ module AlpacaDevice
       @discovery_port = configuration.discovery_port
       @alpaca_port = configuration.alpaca_port
 
+      STDOUT.sync = true
       @logger = Logger.new(STDOUT)
       @logger.level = :info
     end
@@ -28,7 +29,11 @@ module AlpacaDevice
         logger.info('DiscoveryService') { "Received message '#{text}' from #{remote_host}:#{remote_port}" }
 
         if text == 'alpacadiscovery1'
+          logger.info('DiscoveryService') { "Received a correct discovery message from #{remote_host}:#{remote_port}. Responding with alpacaport message..." }
+
           server.send "{\"alpacaport\": #{alpaca_port}}", 0, remote_host, remote_port
+        else
+          logger.info('DiscoveryService') { "Received message from #{remote_host}:#{remote_port} is not a correct discovery message. Skipping it..." }
         end
       end
 
